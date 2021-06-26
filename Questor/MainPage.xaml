@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Questor.MainPage" InputTransparent="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="OutStyle" TargetType="Label">
+
+                <Setter Property="TextColor" Value="#F97F51"/>
+
+                <Setter Property="FontSize" Value="Header"/>
+                
+                <Setter Property="BackgroundColor" Value="#2f3640"/>
+                
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+
+                <Setter Property="VerticalOptions" Value="Center"/>
+
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+
+            </Style>
+
+            <Style x:Key="BodyBackground" TargetType="Grid">
+
+                <Setter Property="BackgroundColor" Value="#353b48"/>
+
+            </Style>
+
+
+            <Style x:Key="FrameStyles" TargetType="Frame">
+
+                <Setter Property="BackgroundColor" Value="#2f3640"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+
+
+            </Style>
+
+
+            <Style x:Key="Slider" TargetType="Slider">
+                
+                <Setter Property="Minimum" Value="2"/>
+                <Setter Property="Maximum" Value="256"/>
+                <Setter Property="MaximumTrackColor" Value="#FD7272"/>
+                <Setter Property="MinimumTrackColor" Value="#182C61"/>
+                <Setter Property="ThumbColor" Value="#718093"/>
+
+            </Style>
+
+            <Style x:Key="AnsweredList" TargetType="ListView">
+
+                <Setter Property="SelectedItem" Value="#dcdde1"/>
+                <Setter Property="SelectionMode" Value="None"/>
+                <Setter Property="BackgroundColor" Value="#718093"/>
+                <Setter Property="Header">
+                    <Setter.Value>
+                        <Label FontSize="Large" HorizontalTextAlignment="Center" TextColor="#CAD3C8"></Label>
+                    </Setter.Value>
+                </Setter>
+               
+
+            </Style>
+
+            <Style x:Key="NoRepeat" TargetType="CheckBox">
+                <Setter Property="Color" Value="#44bd32"/>
+               
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid Style="{StaticResource BodyBackground}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6.5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Orientation="Vertical">
+
+            <Label x:Name="CountOfPerson" FontSize="Medium" FontAttributes="Bold"/>
+            <Slider ValueChanged="PersonCount_ValueChanged" Value="2" Maximum="50"  x:Name="PersonCount" Minimum="2"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Исключать повторы"/>
+                <CheckBox x:Name="Repeats" Style="{StaticResource NoRepeat}"/>
+            </StackLayout>
+
+
+            <Frame Style="{StaticResource FrameStyles}">
+                <Label x:Name="Out"  VerticalOptions="CenterAndExpand" Style="{StaticResource OutStyle}"/>
+            </Frame>
+
+            <ListView x:Name="AnsweredList" Style="{StaticResource AnsweredList}">
+   
+            </ListView>
+            
+            
+        </StackLayout>
+
+        <Button Grid.Row="2" Clicked="Button_Clicked" Text="Выбрать"/>
+
+
+    </Grid>
+
+</ContentPage>
